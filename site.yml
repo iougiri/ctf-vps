@@ -88,7 +88,7 @@
       repo: "{{ item.repo }}"
       dest: "/opt/{{ item.dir_name }}"
       update: no
-      loop:
-        - {dir_name: "wordlists/SecLists", repo: "https://github.com/danielmiessler/SecLists.git"}
-      loop_control:
-        label: "{{ item.dir_name }}"
+    loop:
+      - {dir_name: "wordlists/SecLists", repo: "https://github.com/danielmiessler/SecLists.git"}
+    loop_control:
+      label: "{{ item.dir_name }}"
