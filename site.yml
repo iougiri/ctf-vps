@@ -136,3 +136,17 @@
     loop_control:
       label: "{{ item.url }}"
 
+  - name: download and unpack packages manually
+    tags: ctf, packages, manualdownloads, opt
+    unarchive:
+      src: "{{ item.url }}"
+      dest: "/opt/{{ item.path }}"
+      remote_src: yes
+      mode: 0755
+      owner: root
+      group: root
+    loop:
+      - {path: "tools", url: "https://github.com/jpillora/chisel/releases/download/v1.7.7/chisel_1.7.7_linux_amd64.gz"}
+      - {path: "tools", url: "https://github.com/jpillora/chisel/releases/download/v1.7.7/chisel_1.7.7_windows_amd64.gz"}
+    loop_control:
+      label: "{{ item.url }}"
