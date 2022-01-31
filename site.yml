@@ -111,3 +111,13 @@
     loop_control:
       label: "{{ item }}"
 
+  - name: download packages manually
+    tags: ctf, packages, manualdownloads
+    get_url:
+      url: "{{ item.url }}"
+      dest: "/opt/{{ item.path }}"
+    loop: 
+      - {path: "tools/pspy64", url: "https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy64"}
+    loop_control:
+      label: "{{ item.url }}"
+
