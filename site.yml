@@ -84,8 +84,21 @@
   become: true
   
   tasks:
+
+  - name: create directories in /opt
+    tags: ctf, filesystem, opt
+    file:
+      path: "/opt/{{ item }}"
+      state: directory
+      mode: '0755'
+      owner: root
+      group: root
+    loop:
+      - tools
+      - wordlists
+
   - name: clone Github repos
-    tags: ctf, github, wordlists
+    tags: ctf, github, wordlists, opt
     git:
       repo: "{{ item.repo }}"
       dest: "/opt/{{ item.dir_name }}"
@@ -112,7 +125,7 @@
       label: "{{ item }}"
 
   - name: download packages manually
-    tags: ctf, packages, manualdownloads
+    tags: ctf, packages, manualdownloads, opt
     get_url:
       url: "{{ item.url }}"
       dest: "/opt/{{ item.path }}"
