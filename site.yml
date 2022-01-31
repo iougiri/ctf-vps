@@ -80,10 +80,12 @@
 
 - hosts: localhost
   become: true
+  
   vars:
     git_repos: 
       - {dir_name: "wordlists/SecLists", repo: "https://github.com/danielmiessler/SecLists.git"}
 
+  tasks:
   - name: clone Github repos
     tags: ctf, github, wordlists
     git:
