@@ -140,7 +140,7 @@
 
   - name: unzip files
     tags: ctf, packages, manualdownloads, opt
-    command: "gunzip -c {{ item.src }} > {{ item.dest }}"
+    shell: "gunzip -c {{ item.src }} > {{ item.dest }}"
     loop:
       - {src: "/tmp/chisel_amd64.gz", dest: "/opt/tools/chisel"}
       - {src: "/tmp/chisel_win_amd64.gz", dest: "/opt/tools/chisel_win"}
