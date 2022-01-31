@@ -38,6 +38,7 @@
     tags: init, basic
     package:
       name:
+        - apt-transport-https
         - curl
         - ftp
         - git
@@ -46,6 +47,7 @@
         - mariadb-client
         - openssh-client
         - tmux
+        - traceroute
         - vim
         - wget
       state: latest
