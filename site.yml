@@ -95,7 +95,7 @@
 
   - name: unpack rockyou.txt
     tags: wordlists
-    unpack:
+    unarchive:
       src: /opt/wordlists/SecLists/Passwords/Leaked-Databases/rockyou.txt.tar.gz
       dest: /opt/wordlists/SecLists/Passwords/Leaked-Databases
       
