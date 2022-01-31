@@ -130,23 +130,21 @@
     tags: ctf, packages, manualdownloads, opt
     get_url:
       url: "{{ item.url }}"
-      dest: "/opt/{{ item.path }}"
+      dest: "{{ item.path }}"
     loop: 
-      - {path: "tools/pspy64", url: "https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy64"}
+      - {path: "/opt/tools/pspy64", url: "https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy64"}
+      - {path: "/tmp/chisel_amd64.gz", url: "https://github.com/jpillora/chisel/releases/download/v1.7.7/chisel_1.7.7_linux_amd64.gz"}
+      - {path: "/tmp/chisel_win_amd64.gz", url: "https://github.com/jpillora/chisel/releases/download/v1.7.7/chisel_1.7.7_windows_amd64.gz"}
     loop_control:
       label: "{{ item.url }}"
 
-  - name: download and unpack packages manually
+  - name: unzip files
     tags: ctf, packages, manualdownloads, opt
-    unarchive:
-      src: "{{ item.url }}"
-      dest: "/opt/{{ item.path }}"
-      remote_src: yes
-      mode: 0755
-      owner: root
-      group: root
+    command: "gunzip -c {{ item.src }} > {{ item.dest }}"
+      src: "{{ item.src }}"
+      dest: "/opt/{{ item.dest }}"
     loop:
-      - {path: "tools", url: "https://github.com/jpillora/chisel/releases/download/v1.7.7/chisel_1.7.7_linux_amd64.gz"}
-      - {path: "tools", url: "https://github.com/jpillora/chisel/releases/download/v1.7.7/chisel_1.7.7_windows_amd64.gz"}
+      - {src: "/tmp/chisel_amd64.gz", dest: "/opt/tools/chisel"}
+      - {src: "/tmp/chisel_win_amd64.gz", dest: "/opt/tools/chisel_win"}
     loop_control:
-      label: "{{ item.url }}"
+      label: "{{ item.dest }}"
