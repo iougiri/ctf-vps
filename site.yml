@@ -11,6 +11,7 @@
 
 - hosts: localhost
   become: true
+  tasks:
 
   - name: add Kali archive key
     tags: init, kali
