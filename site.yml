@@ -92,3 +92,10 @@
       - {dir_name: "wordlists/SecLists", repo: "https://github.com/danielmiessler/SecLists.git"}
     loop_control:
       label: "{{ item.dir_name }}"
+
+  - name: unpack rockyou.txt
+    tags: wordlists
+    unpack:
+      src: /opt/wordlists/SecLists/Passwords/Leaked-Databases/rockyou.txt.tar.gz
+      dest: /opt/wordlists/SecLists/Passwords/Leaked-Databases
+      
