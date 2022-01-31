@@ -102,7 +102,7 @@
   - name: install Go packages
     tags: ctf, go, packages
     environment:
-      GOPATH: "/usr/local/go/bin"
+      GOPATH: "/usr/local/go"
     command: go install "{{ item }}"
     loop:
       - github.com/tomnomnom/anew@latest
