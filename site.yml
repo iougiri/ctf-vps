@@ -5,72 +5,72 @@
   pre_tasks:
     
   - name: update cache
-      tags: always
-      apt:
+    tags: always
+    apt:
           update_cache: yes
 
 - hosts: localhost
   become: true
 
   - name: add Kali archive key
-      tags: init, kali
-      apt_key:
-          url: https://archive.kali.org/archive-key.asc
-          state: present
+    tags: init, kali
+    apt_key:
+      url: https://archive.kali.org/archive-key.asc
+      state: present
 
   - name: replace all entries in sources.list with Kali
-      tags: init, kali
-      copy:
-          src: sources.list
-          dest: /etc/apt/sources.list
-          owner: root
-          group: root
-          mode: 0644
+    tags: init, kali
+    copy:
+      src: sources.list
+      dest: /etc/apt/sources.list
+      owner: root
+      group: root
+      mode: 0644
 
   - name: dist upgrade to Kali
-      tags: init, kali
-      apt:
-          upgrade: dist
-          update_cache: yes
+    tags: init, kali
+    apt:
+      upgrade: dist
+      update_cache: yes
 
   - name: install basic packages
-      tags: init, basic
-      package:
-          name:
-              - curl
-              - ftp
-              - git
-              - grep
-              - mariadb-client
-              - openssh-client
-              - tmux
-              - vim
-              - wget
-          state: latest
+    tags: init, basic
+    package:
+      name:
+        - curl
+        - ftp
+        - git
+        - grep
+        - mariadb-client
+        - openssh-client
+        - tmux
+        - vim
+        - wget
+      state: latest
 
   - name: install programming languages
-      tags: ctf, programming, basic
-      apt:
-          name:
-              - golang
-              - python2
-              - python3
-              - python3-pip
-              - python3-venv
+    tags: ctf, programming, basic
+    apt:
+      name:
+        - golang
+        - python2
+        - python3
+        - python3-pip
+        - python3-venv
 
   - name: install CTF packages
-      tags: ctf, kali
-      apt:
-          name:
-              - dnsutils
-              - ffuf
-              - gobuster
-              - hashcat
-              - hydra
-              - john
-              - nmap
-              - ripgrep
-              - silversearcher-ag
-              - sqlmap
-              - wpscan
-          state: latest
+    tags: ctf, kali
+    apt:
+      name:
+        - dnsutils
+        - ffuf
+        - gobuster
+        - hashcat
+        - hydra
+        - john
+        - nmap
+        - ripgrep
+        - silversearcher-ag
+        - sqlmap
+        - wpscan
+      state: latest
