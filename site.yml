@@ -46,8 +46,10 @@
         - htop
         - mariadb-client
         - openssh-client
+        - tar
         - tmux
         - traceroute
+        - unzip
         - vim
         - wget
       state: latest
