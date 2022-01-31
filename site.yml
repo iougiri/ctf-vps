@@ -77,3 +77,10 @@
         - sqlmap
         - wpscan
       state: latest
+
+  - name: clone Github repos
+    tags: ctf, github, wordlists
+    git:
+      repo: https://github.com/danielmiessler/SecLists.git
+      dest: /opt/wordlists/
+      update: no
