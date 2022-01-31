@@ -7,7 +7,7 @@
   - name: update cache
     tags: always
     apt:
-          update_cache: yes
+      update_cache: yes
 
 - hosts: localhost
   become: true
