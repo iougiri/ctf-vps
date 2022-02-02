@@ -166,3 +166,10 @@
       shell: /bin/bash
       groups: sudo
       password: '{{ lookup("env", "ANSIBLE_USERPASS") }}'
+
+  - name: add public key to authorized_keys
+    tags: user
+    authorized_key:
+      user: '{{ lookup("env", "ANSIBLE_USER") }}'
+      key: '{{ lookup("env", "ANSIBLE_PUBKEY") }}'
+
