@@ -149,3 +149,17 @@
       - {src: "/tmp/chisel_win_amd64.gz", dest: "/opt/tools/chisel_win"}
     loop_control:
       label: "{{ item.dest }}"
+
+- hosts: localhost
+  become: true
+  
+  tasks:
+
+  - name: create user account
+    tags: user
+    user:
+      name: '{{ lookup("env", "ANSIBLE_USER") }}'
+      uid: 1000
+      shell: /bin/bash
+      groups: sudo
+      password: '{{ lookup("env", "ANSIBLE_USERPASS") }}'
