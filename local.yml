@@ -164,7 +164,8 @@
       uid: 1000
       shell: /bin/bash
       groups: sudo
-      password: '{{ lookup("env", "ANSIBLE_USERPASS") }}'
+      password: '{{ lookup("env", "ANSIBLE_USERPASS") | password_hash("sha512") }}'
+      update_password: on_create
 
   - name: add public key to authorized_keys
     tags: user, ssh
