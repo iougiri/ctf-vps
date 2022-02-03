@@ -47,6 +47,7 @@
         - jq
         - mariadb-client
         - openssh-client
+        - openvpn
         - rsync
         - tar
         - tmux
