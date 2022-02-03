@@ -46,7 +46,6 @@
         - htop
         - jq
         - mariadb-client
-        - mkpasswd
         - openssh-client
         - rsync
         - tar
