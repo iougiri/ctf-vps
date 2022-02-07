@@ -4,7 +4,9 @@
   apt:
     update_cache: yes
     name:
+      - crackmapexec
       - dnsutils
+      - enum4linux
       - ffuf
       - gobuster
       - hashcat
@@ -13,7 +15,10 @@
       - metasploit-framework
       - nmap
       - ripgrep
+      - rlwrap
       - silversearcher-ag
+      - smbclient
+      - smbmap
       - sqlmap
       - wpscan
     state: latest
