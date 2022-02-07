@@ -1,0 +1,20 @@
+- name: install CTF packages
+  tags: ctf, kali
+  become: yes
+  apt:
+    update_cache: yes
+    name:
+      - dnsutils
+      - ffuf
+      - gobuster
+      - hashcat
+      - hydra
+      - john
+      - metasploit-framework
+      - nmap
+      - ripgrep
+      - silversearcher-ag
+      - sqlmap
+      - wpscan
+    state: latest
+

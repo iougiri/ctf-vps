@@ -1,0 +1,37 @@
+- name: update package cache (Debian)
+  tags: init, basic
+  become: yes
+  apt:
+    update_cache: yes
+  when: ansible_os_family == 'Debian'
+
+- name: update package cache (RedHat)
+  tags: init, basic
+  become: yes
+  dnf:
+    update_cache: yes
+  when: ansible_os_family == 'RedHat'
+
+- name: install basic packages
+  tags: init, basic
+  become: yes
+  package:
+    name:
+      - apt-transport-https
+      - curl
+      - ftp
+      - git
+      - grep
+      - htop
+      - jq
+      - mariadb-client
+      - openssh-client
+      - openvpn
+      - rsync
+      - tar
+      - tmux
+      - traceroute
+      - unzip
+      - vim
+      - wget
+    state: latest

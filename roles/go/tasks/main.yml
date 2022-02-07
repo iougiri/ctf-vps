@@ -1,0 +1,19 @@
+- name: install Golang
+  tags: ctf, programming, go
+  become: yes
+  apt:
+    update_cache: yes
+    name:
+      - golang
+
+- name: install Go packages
+  tags: ctf, go, packages
+  become: yes
+  environment:
+    GOPATH: "/usr/local/go"
+  command: go install "{{ item }}"
+  loop:
+    - github.com/tomnomnom/anew@latest
+  loop_control:
+    label: "{{ item }}"
+

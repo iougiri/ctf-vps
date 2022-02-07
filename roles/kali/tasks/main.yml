@@ -1,0 +1,25 @@
+
+- name: add Kali archive key
+  tags: init, kali
+  become: true
+  apt_key:
+    url: https://archive.kali.org/archive-key.asc
+    state: present
+
+- name: replace all entries in sources.list with Kali
+  tags: init, kali
+  become: true
+  copy:
+    src: sources.list
+    dest: /etc/apt/sources.list
+    owner: root
+    group: root
+    mode: 0644
+
+- name: dist upgrade to Kali
+  tags: init, kali
+  become: true
+  apt:
+    upgrade: dist
+    update_cache: yes
+
