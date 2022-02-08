@@ -10,3 +10,16 @@
       - python3-pip
       - python3-venv
 
+- name: create Python virtual environments
+  tags: ctf, programming, python
+  become: yes
+  pip:
+    virtualenv: /opt/venv/ctf
+    virtualenv_command: /usr/bin/python3 -m venv
+    name:
+      - pwntools
+      - requests
+      - pycryptodome
+      - scapy
+      - paramiko
+      - black
