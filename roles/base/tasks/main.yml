@@ -18,8 +18,10 @@
   package:
     name:
       - apt-transport-https
+      - build-essential
       - curl
       - ftp
+      - gcc
       - git
       - grep
       - htop
@@ -34,4 +36,5 @@
       - unzip
       - vim
       - wget
+      - xsel
     state: latest
