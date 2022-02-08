@@ -27,9 +27,11 @@
       - htop
       - jq
       - mariadb-client
+      - ncat
       - openssh-client
       - openvpn
       - rsync
+      - socat
       - tar
       - tmux
       - traceroute
