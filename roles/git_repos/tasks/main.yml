@@ -40,6 +40,7 @@
     - {path: "/tmp/chisel_amd64.gz", url: "https://github.com/jpillora/chisel/releases/download/v1.7.7/chisel_1.7.7_linux_amd64.gz"}
     - {path: "/tmp/chisel_win_amd64.gz", url: "https://github.com/jpillora/chisel/releases/download/v1.7.7/chisel_1.7.7_windows_amd64.gz"}
     - {path: "/usr/local/bin/kerbrute", url: "https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64"}
+    - {path: "/tmp/mimikatz_trunk.zip", url: "https://github.com/gentilkiwi/mimikatz/releases/download/2.2.0-20210810-2/mimikatz_trunk.zip"}
     - {path: "/opt/tools/PowerView.ps1", url: "https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/dev/Recon/PowerView.ps1"}
     - {path: "/opt/tools/pspy64", url: "https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy64"}
     - {path: "/opt/tools/SharpHound.exe", url: "https://github.com/BloodHoundAD/BloodHound/raw/master/Collectors/SharpHound.exe"}
@@ -58,4 +59,11 @@
     - {src: "/tmp/chisel_win_amd64.gz", dest: "/opt/tools/chisel.exe"}
   loop_control:
     label: "{{ item.dest }}"
+
+- name: unzip mimikatz files
+  tags: ctf, packages, manualdownloads, opt
+  become: yes
+  shell: "unzip -j /tmp/mimikatz_trunk.zip x64/mimikatz.exe -d /opt/tools"
+  args:
+    creates: "/opt/tools/mimikatz.exe"
 
