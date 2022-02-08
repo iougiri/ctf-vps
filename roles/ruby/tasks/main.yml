@@ -1,0 +1,19 @@
+- name: install ruby
+  tags: ctf, programming, ruby
+  become: yes
+  apt:
+    update_cache: yes
+    name:
+      - ruby
+      - ruby-dev
+      - ruby-rubygems
+
+- name: install ruby gems
+  tags: ctf, programming, ruby
+  become: yes
+  gem:
+    name: "{{ item }}"
+    state: latest
+    user_install: no
+  loop:
+    - evil-winrm

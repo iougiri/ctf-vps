@@ -18,5 +18,6 @@
     - git_repos
     - python
     - go
+    - ruby
     - harden_sshd
 
