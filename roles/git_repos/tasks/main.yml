@@ -41,6 +41,7 @@
     - {path: "/tmp/chisel_win_amd64.gz", url: "https://github.com/jpillora/chisel/releases/download/v1.7.7/chisel_1.7.7_windows_amd64.gz"}
     - {path: "/usr/local/bin/kerbrute", url: "https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64"}
     - {path: "/tmp/mimikatz_trunk.zip", url: "https://github.com/gentilkiwi/mimikatz/releases/download/2.2.0-20210810-2/mimikatz_trunk.zip"}
+    - {path: "/tmp/ncat_portable.zip", url: "http://nmap.org/dist/ncat-portable-5.59BETA1.zip"}
     - {path: "/opt/tools/PowerView.ps1", url: "https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/dev/Recon/PowerView.ps1"}
     - {path: "/opt/tools/pspy64", url: "https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy64"}
     - {path: "/opt/tools/Rubeus.exe", url: "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.7_x64/Rubeus.exe"}
@@ -62,10 +63,15 @@
   loop_control:
     label: "{{ item.dest }}"
 
-- name: unzip mimikatz files
+- name: unzip .zip files with nested binaries
   tags: ctf, packages, manualdownloads, opt
   become: yes
-  shell: "unzip -j /tmp/mimikatz_trunk.zip x64/mimikatz.exe -d /opt/tools"
+  shell: "unzip -j {{ item.src }} {{ item.zippath }} -d {{ item.dest }}"
   args:
-    creates: "/opt/tools/mimikatz.exe"
+    creates: "{{ item.dest }}/{{ item.filename }}"
+  loop:
+    - {src: "/tmp/mimikatz_trank.zip", zippath: "x64/mimikatz.exe", dest: "/opt/tools", filename: "mimikatz.exe"}
+    - {src: "/tmp/ncat_portable.zip", zippath: "**/ncat.exe", dest: "/opt/tools", filename: "ncat.exe"}
+  loop_control:
+    label: "{{ item.filename }}"
 
