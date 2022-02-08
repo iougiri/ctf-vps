@@ -40,11 +40,14 @@
     - {path: "/tmp/chisel_amd64.gz", url: "https://github.com/jpillora/chisel/releases/download/v1.7.7/chisel_1.7.7_linux_amd64.gz"}
     - {path: "/tmp/chisel_win_amd64.gz", url: "https://github.com/jpillora/chisel/releases/download/v1.7.7/chisel_1.7.7_windows_amd64.gz"}
     - {path: "/usr/local/bin/kerbrute", url: "https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64"}
+    - {path: "/opt/tools/PowerView.ps1", url: "https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/dev/Recon/PowerView.ps1"}
     - {path: "/opt/tools/pspy64", url: "https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy64"}
+    - {path: "/opt/tools/SharpHound.exe", url: "https://github.com/BloodHoundAD/BloodHound/raw/master/Collectors/SharpHound.exe"}
+    - {path: "/opt/tools/SharpHound.ps1", url: "https://raw.githubusercontent.com/BloodHoundAD/BloodHound/master/Collectors/SharpHound.ps1"}
   loop_control:
     label: "{{ item.url }}"
 
-- name: unzip files
+- name: unpack .gz files
   tags: ctf, packages, manualdownloads, opt
   become: yes
   shell: "gunzip -c {{ item.src }} > {{ item.dest }}"
