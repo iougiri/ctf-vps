@@ -14,6 +14,15 @@
   command: go install "{{ item }}"
   loop:
     - github.com/tomnomnom/anew@latest
+    - github.com/tomnomnom/assetfinder@latest
+    - github.com/tomnomnom/httprobe@latest
+    - github.com/tomnomnom/waybackurls@latest
+    - github.com/tomnomnom/fff@latest
+    - github.com/tomnomnom/unfurl@latest
+    - github.com/tomnomnom/gf@latest
+    - github.com/tomnomnom/meg@latest
+    - github.com/tomnomnom/gron@latest
+    - github.com/tomnomnom/comb@latest
   loop_control:
     label: "{{ item }}"
 
