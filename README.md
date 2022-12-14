@@ -20,9 +20,9 @@ The playbook creates a user who is a member of the sudo group. For this, it expe
 
 They can be set like this:
 ```sh-session
-export ANSIBLE_USER = username
-export ANSIBLE_USERPASS = mypassword
-export ANSIBLE_PUBKEY = 'ssh-ed25519 AAAAZ5MaaeXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXrAPrd3puF2vfpX user@host'
+export ANSIBLE_USER=username
+export ANSIBLE_USERPASS=mypassword
+export ANSIBLE_PUBKEY='ssh-ed25519 AAAAZ5MaaeXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXrAPrd3puF2vfpX user@host'
 ```
 
 Then pull the playbook from Github and execute it:
