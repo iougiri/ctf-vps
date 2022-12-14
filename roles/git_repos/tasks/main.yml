@@ -70,7 +70,7 @@
   args:
     creates: "{{ item.dest }}/{{ item.filename }}"
   loop:
-    - {src: "/tmp/mimikatz_trank.zip", zippath: "x64/mimikatz.exe", dest: "/opt/tools", filename: "mimikatz.exe"}
+    - {src: "/tmp/mimikatz_trunk.zip", zippath: "x64/mimikatz.exe", dest: "/opt/tools", filename: "mimikatz.exe"}
     - {src: "/tmp/ncat_portable.zip", zippath: "**/ncat.exe", dest: "/opt/tools", filename: "ncat.exe"}
   loop_control:
     label: "{{ item.filename }}"
